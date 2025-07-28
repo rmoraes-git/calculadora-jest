@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><title>Calculadora</title></head>
+<body>
+  <input id="a" type="number" />
+  <input id="b" type="number" />
+  <select id="operacao">
+    <option value="soma">Somar</option>
+    <option value="subtrai">Subtrair</option>
+  </select>
+  <button onclick="calcular()">Calcular</button>
+  <div id="resultado"></div>
+
+  <script>
+    async function calcular() {
+      const a = Number(document.getElementById('a').value);
+      const b = Number(document.getElementById('b').value);
+      const operacao = document.getElementById('operacao').value;
+      const resultado = await window.api.calcular(a, b, operacao);
+      document.getElementById('resultado').innerText = resultado;
+    }
+  </script>
+</body>
+</html>
