@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
-const { somar, subtrair } = require('./operacoes');
+const{calcularFrete, calcularDesconto, avaliarTemperatura} = require('./operacoes');
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -15,8 +15,10 @@ function createWindow() {
 
 app.whenReady().then(createWindow);
 
-ipcMain.handle('calcular', (_, { a, b, operacao }) => {
-  if (operacao === 'soma') return somar(a, b);
-  if (operacao === 'subtrai') return subtrair(a, b);
+ipcMain.handle('calcular', (_, { valor, operacao }) => {
+  if (operacao === 'calcularFrete') return calcularFrete(valor)
+  if (operacao === 'calcularDesconto') return calcularDesconto(valor)
+  if (operacao === 'avaliarTemperatura') return avaliarTemperatura(valor)
+  
   return 0;
 });
