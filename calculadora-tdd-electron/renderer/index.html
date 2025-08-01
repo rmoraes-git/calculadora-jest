@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head><title>Calculadora</title></head>
+<head>
+  <title>Calculadora</title>
+  <link href="style.css" type="text/css" rel="stylesheet">
+</head>
 <body>
-  <input id="a" type="number" />
-  <input id="b" type="number" />
+  <input placeholder = 'Digite o número' id ="valor" type="number" />
   <select id="operacao">
-    <option value="soma">Somar</option>
-    <option value="subtrai">Subtrair</option>
+    <option value="calcularFrete">Calcular Frete</option>
+    <option value="calcularDesconto">Calcular Desconto</option>
+    <option value="avaliarTemperatura">Avaliar Temperatura</option>
+    
   </select>
   <button onclick="calcular()">Calcular</button>
   <div id="resultado"></div>
 
   <script>
     async function calcular() {
-      const a = Number(document.getElementById('a').value);
-      const b = Number(document.getElementById('b').value);
+      const valor = (document.getElementById('valor').value);
       const operacao = document.getElementById('operacao').value;
-      const resultado = await window.api.calcular(a, b, operacao);
-      document.getElementById('resultado').innerText = resultado;
+      const resultado = await window.api.calcular(valor, operacao)
+      document.getElementById('resultado').innerText = resultado
     }
   </script>
 </body>
